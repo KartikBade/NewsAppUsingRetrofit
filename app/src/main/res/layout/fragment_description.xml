@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.DescriptionFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/heading_news_image"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/heading_news_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/heading_news_image"
+            tools:text="A huge fight broke out in Shivajinagar, Pune, over the most controvertial topic ever - 'Who makes better pets, Dogs vs Cats?'" />
+
+        <TextView
+            android:id="@+id/heading_news_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            tools:text="Kartik Bade"
+            android:textAlignment="textEnd"
+            app:layout_constraintTop_toBottomOf="@id/heading_news_title"/>
+
+        <TextView
+            android:id="@+id/news_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:lineSpacingMultiplier="1.25"
+            android:textSize="16sp"
+            tools:text="This weeks look at the secret world of kids and teenagers sees us examining a dubious TikTok orthodontic trend, singing songs about poop, and enjoying the absolutely delightful teen show Wednesday. S… [+5992 chars]"
+            app:layout_constraintTop_toBottomOf="@id/heading_news_author"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
