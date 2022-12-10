@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.newsappusingretrofit.R
+import androidx.lifecycle.lifecycleScope
+import com.example.newsappusingretrofit.databinding.FragmentNewsFeedBinding
+import com.example.newsappusingretrofit.network.NewsApi
+import kotlinx.coroutines.launch
 
 class NewsFeedFragment : Fragment() {
 
@@ -13,7 +16,14 @@ class NewsFeedFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_news_feed, container, false)
+        val binding = FragmentNewsFeedBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        binding.newsFeedRecyclerView.adapter = NewsFeedAdapter()
+        val adapter = binding.newsFeedRecyclerView.adapter as NewsFeedAdapter
+        lifecycleScope.launch {
+            val data = NewsApi.retrofitService.getNews()
+            adapter.submitList(data.articles)
+        }
+        return binding.root
     }
 }
