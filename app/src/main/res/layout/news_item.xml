@@ -7,6 +7,10 @@
         <variable
             name="news"
             type="com.example.newsappusingretrofit.network.News" />
+
+        <variable
+            name="clickListener"
+            type="com.example.newsappusingretrofit.ui.NewsClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,6 +25,7 @@
             android:layout_margin="16dp"
             app:cardUseCompatPadding="true"
             app:cardElevation="10dp"
+            android:onClick="@{() -> clickListener.onClick(news)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -61,7 +66,6 @@
                     android:layout_marginTop="10dp"
                     android:scaleType="centerCrop"
                     imageUrl="@{news.imageLink}"
-                    android:src="@drawable/ic_launcher_background"
                     app:layout_constraintTop_toBottomOf="@id/news_author"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
