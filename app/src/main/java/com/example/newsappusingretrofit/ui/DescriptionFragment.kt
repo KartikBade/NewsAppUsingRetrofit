@@ -22,7 +22,7 @@ class DescriptionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentDescriptionBinding.inflate(inflater)
         binding.lifecycleOwner = this
 

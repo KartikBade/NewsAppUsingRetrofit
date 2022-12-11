@@ -13,6 +13,8 @@ import kotlinx.coroutines.launch
 
 private const val TAG = "NewsViewModel"
 
+enum class Status { DONE, ERROR, LOADING }
+
 class NewsViewModel: ViewModel() {
 
     private val _news = MutableLiveData<List<News>>()
@@ -21,9 +23,25 @@ class NewsViewModel: ViewModel() {
     private val _newsArticle = MutableLiveData<News>()
     val newsArticle: LiveData<News> = _newsArticle
 
+    private val _status = MutableLiveData<Status>()
+    val status: LiveData<Status> = _status
+
     fun getNewsFeed(searchQuery: String) {
+        _news.value = listOf()
+        _status.value = Status.LOADING
         viewModelScope.launch {
-            _news.value = NewsApi.retrofitService.getNews(searchQuery).articles
+            try {
+                _news.value = NewsApi.retrofitService.getNews(searchQuery).articles
+                if (_news.value!!.isEmpty()) {
+                    _status.value = Status.ERROR
+                } else {
+                    _status.value = Status.DONE
+                }
+            } catch (e: java.lang.Exception) {
+                _news.value = listOf()
+                _status.value = Status.ERROR
+                Log.e(TAG, "getNewsFeed: $e")
+            }
         }
     }
 

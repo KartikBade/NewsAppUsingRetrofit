@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             app:cardUseCompatPadding="true"
-            app:cardElevation="10dp"
+            app:cardElevation="12dp"
             android:onClick="@{() -> clickListener.onClick(news)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
